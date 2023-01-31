@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: product-db
+  labels:
+    app: widgetario
+    component: product-db
+spec:
+  containers:
+    - name: product-db-container
+      image: widgetario/products-db:21.03
+      env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: product-db-pw
+              key: POSTGRES_PASSWORD

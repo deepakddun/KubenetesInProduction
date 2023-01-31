@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  logging.json: |2-
+        {
+          "Serilog": {
+            "MinimumLevel": {
+              "Default": "Warning",
+              "Override": {
+                "WiredBrain": "Information"
+              }
+            }
+          }
+        }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: web-logging

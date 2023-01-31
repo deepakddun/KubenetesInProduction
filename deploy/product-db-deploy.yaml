@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-db-deploy
+  labels:
+    component: product-db-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: widgetario
+      component: product-db
+  template:
+    metadata:
+      labels:
+        app: widgetario
+        component: product-db
+    spec:
+      containers:
+        - name: product-db-container
+          image: widgetario/products-db:21.03
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: product-db-pw
+                  key: POSTGRES_PASSWORD

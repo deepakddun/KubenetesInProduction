@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  application.properties: ICAgIHNwcmluZy5qcGEuZGF0YWJhc2U9UE9TVEdSRVNRTAogICAgc3ByaW5nLmRhdGFzb3VyY2UucGxhdGZvcm09cG9zdGdyZXMKICAgIHNwcmluZy5kYXRhc291cmNlLnVybD1qZGJjOnBvc3RncmVzcWw6Ly9wcm9kdWN0cy1kYjo1NDMyL3Bvc3RncmVzCiAgICBzcHJpbmcuZGF0YXNvdXJjZS51c2VybmFtZT1wb3N0Z3JlcwogICAgc3ByaW5nLmRhdGFzb3VyY2UucGFzc3dvcmQ9bSpsZXN0b25lMw==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: products-api-db-app-prop

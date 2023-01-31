@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stocks-api-deploy
+  labels:
+    component: stocks-api-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: widgetario
+      component: stock-api
+  template:
+    metadata:
+      labels:
+        app: widgetario
+        component: stock-api
+    spec:
+      containers:
+        - name: stock-api-container
+          image: 'widgetario/stock-api:21.03'
+          env:
+            - name: POSTGRES_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: stocks-api-db-conn-str
+                  key: POSTGRES_CONNECTION_STRING

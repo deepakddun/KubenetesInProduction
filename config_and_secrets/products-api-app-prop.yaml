@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  application.properties: |2-
+        price.factor=1.5
+        logging.level.wiredbrain.products=DEBUG
+        server.port=80
+        spring.jpa.show-sql=true
+        spring.jpa.generate-ddl=true
+        spring.jpa.hibernate.ddl-auto=update
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: products-api-app-prop

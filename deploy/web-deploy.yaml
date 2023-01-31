@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deploy
+  labels:
+    component: web-deploy
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  replicas: 3
+  selector:
+    matchLabels:
+      app: widgetario
+      component: web
+  template:
+    metadata:
+      labels:
+        app: widgetario
+        component: web
+    spec:
+      containers:
+        - name: web-container
+          image: 'widgetario/web:21.03-v2'
+          env:
+            - name: Widgetario__Theme
+              value: dark
+            - name: Widgetario__Debug
+              value: "true"
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+              readOnly: true
+            - name: secret
+              mountPath: /app/secrets
+      volumes:
+        - name: config
+          configMap:
+            name: web-logging
+        - name: secret
+          secret:
+            secretName: web-api-sec
